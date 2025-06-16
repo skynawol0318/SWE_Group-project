@@ -98,10 +98,12 @@ def predict_image(file_path: str )-> tuple[str, float]:
 # 테스트용 / pridect_image() 작동하는지 참고용 코드라서 지우셔도 됩니다
 # 테스트용 이미지 리스트
 test_images = [
-    "images/test_plastic.png",
-    "images/test_can.jpg",
-    "images/test_glass.png",
+    "static/images/test_plastic.png",
+    "static/images/test_can.jpg",
+    "static/images/test_glass.png",
+    "static/images/test_plastic2.png"
 ]
+
 
 # 이미지 리스트로 여러 이미지 처리할 수 있도록 변경
 for img_path in test_images:
