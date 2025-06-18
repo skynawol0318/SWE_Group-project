@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeHistoryBtn = document.getElementById("closeHistoryBtn");    // 기록 모달 닫기 버튼
   const historyStats = document.getElementById("historyStats");          // 기록 통계 표시 영역
 
+  const loadingMessage = document.getElementById("loadingMessage");      // 분석 중 메시지 영역
+  const copyGuideBtn = document.getElementById("copyGuideBtn");          // 안내문 복사 버튼
+  const copyStatus = document.getElementById("copyStatus");              // 복사 상태 텍스트
+
   //이미지 업로드 및 분석 처리
   uploadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -25,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData();           //FormData에 이미지 추가
     formData.append("image", file);
+
+     // 분석 중 메시지 표시
+    loadingMessage.classList.remove("hidden");
 
     try {
       //이미지 업로드
@@ -62,6 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       resultSection.classList.remove("hidden");       //결과 영역 보여주기
 
+      const copyGuideBtn = document.getElementById("copyGuideBtn");
+      if (copyGuideBtn) {
+       copyGuideBtn.addEventListener("click", () => {
+         const text = guideText.textContent;
+         navigator.clipboard.writeText(text)
+           .then(() => alert("안내문이 복사되었습니다!"))
+           .catch(() => alert("복사에 실패했습니다."));
+       });
+      } 
+     
+
       //결과 저장
       saveBtn.onclick = async () => {
         await fetch("/save", {
@@ -86,7 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.error(err);
       errorSection.classList.remove("hidden");
-    }
+    } finally {
+      loadingMessage.classList.add("hidden");   // 분석 완료 후 메시지 숨기기
+    }  
   });
 
   //사용법 모달 처리

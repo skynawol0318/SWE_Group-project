@@ -163,6 +163,14 @@ button:hover {
   display: none;
 }
 
+/* 분석 중 메시지 */
+#loadingMessage {
+  text-align: center;
+  font-size: 14px;
+  color: #2d89ef;
+  margin-bottom: 15px;
+}
+
 /*통계 박스*/
 .stats-box {
   background-color: #f9f9f9;
@@ -181,4 +189,29 @@ button:hover {
 
 .stats-box li {
   margin: 4px 0;
+}
+
+/* 안내문 복사 버튼 */
+#copyGuideBtn {
+  margin-top: 10px;
+  padding: 6px 14px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 복사 버튼 호버 효과 */
+#copyGuideBtn:hover {
+  background-color: #574fd6;
+}
+
+/* 복사 상태 텍스트 */
+#copyStatus {
+  font-size: 12px;
+  color: #555;
+  margin-top: 5px;
+  text-align: center;
 }
