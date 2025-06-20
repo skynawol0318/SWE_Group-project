@@ -29,7 +29,7 @@
   <div class="container">
     <h1>AI 기반 분리수거 도우미</h1>
     <form id="uploadForm">
-      <div id="loadingMessage" class="hidden">🔍 이미지 분석 중입니다...</div>
+      <div id="loadingMessage" class="hidden">🔍 이미지 분석 중입니다...</div> <!-- 기능 추가 부분 -->
       <input type="file" id="imageInput" accept="image/*" required />
       <button type="submit">이미지 업로드</button>
     </form>
@@ -40,8 +40,8 @@
       <p><strong>신뢰도:</strong> <span id="confidence"></span></p>
       <h3>분리수거 안내</h3>
       <p id="guideText"></p>
-      <button id="copyGuideBtn">안내문 복사</button>
-      <span id="copyStatus" class="hidden">📋 복사됨!</span>
+      <button id="copyGuideBtn">안내문 복사</button> <!-- 기능 추가 부분 -->
+      <span id="copyStatus" class="hidden">📋 복사됨!</span> <!-- 기능 추가 부분 -->
       <button id="saveResultBtn">결과 저장</button>
       <button id="discardResultBtn">저장하지 않기</button>
     </div>
