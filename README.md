@@ -19,9 +19,6 @@ Backend: Python (Flask)
 AI 모델: Ollama 기반 VLM / LLM 연동
 
 4. 📁 디렉터리 구조
-bash
-복사
-편집
 project-root/
 │
 ├── app.py                  # Flask 백엔드 메인 실행 파일
@@ -35,6 +32,8 @@ project-root/
 ├── index.html             # 웹 페이지 메인 HTML
 ├── style.css              # 프론트엔드 스타일시트
 └── script.js              # 프론트엔드 JavaScript 로직
+
+
 5. 🔄 전체 흐름 요약
 사용자가 이미지를 업로드하면, VLM이 분류 결과를 추론하고 해당 결과를 기반으로 LLM이 분리수거 가이드를 생성하여 웹에 출력합니다.
 프론트엔드는 HTML/CSS/JS로 구성되며, Flask 백엔드가 두 모델과 연동되어 전체 흐름을 처리합니다.
