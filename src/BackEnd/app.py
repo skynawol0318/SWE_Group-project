@@ -52,4 +52,4 @@ def upload():
 
 if __name__ == '__main__':
     # debug=True 로 실행하면 에러가 터미널과 브라우저에 자세히 표시됩니다.
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8000)
