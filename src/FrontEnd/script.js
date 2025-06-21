@@ -43,3 +43,18 @@ uploadBtn.addEventListener('click', async () => {
     fileInput.value = '';
   }
 });
+
+// 기록 보기 버튼 이벤트
+const viewLogsButton = document.getElementById('viewLogsButton');
+viewLogsButton.addEventListener('click', () => {
+  alert('📜 기록 보기 기능은 현재 준비 중입니다.');
+});
+
+// 사용 방법 버튼 이벤트
+const usageGuideButton = document.getElementById('usageGuideButton');
+usageGuideButton.addEventListener('click', () => {
+  alert(`❓ 사용 방법 안내입니다:
+
+1. 이미지를 선택 후 '이미지 업로드' 버튼을 누르세요.
+2. AI가 분류 및 재활용 가이드를 제공해드립니다.`);
+});
