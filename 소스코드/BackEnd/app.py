@@ -1,24 +1,55 @@
-from flask import Flask
+# BackEnd/app.py
+
+import os
+import tempfile
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-# 라우트 파일 import
-from routes.upload_route import upload_bp
-from routes.analyze_route import analyze_bp
-from routes.guide_route import guide_bp
+# VLM(비전) 모델 분류 함수
+from vlm_service import predict_image
+# LLM 서비스 함수
+from llm_service import get_guidance_for_category
 
 app = Flask(__name__)
+CORS(app)  # http://127.0.0.1:5500 에서 오는 요청 허용
 
-# 업로드 파일 저장 경로 설정
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+@app.route('/upload', methods=['POST'])
+def upload():
+    try:
+        # 1) 파일 검사
+        if 'image' not in request.files:
+            return jsonify(error='이미지 파일을 찾을 수 없습니다.'), 400
+        img = request.files['image']
 
-# 프론트엔드와 연동 위한 CORS 허용
-CORS(app)
+        # 2) FileStorage → 임시 파일로 저장
+        #    (predict_image는 경로(str)를 받도록 작성된 경우)
+        suffix = os.path.splitext(img.filename)[1] or ''
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+            temp_path = tmp.name
+            img.save(temp_path)
 
-# 블루프린트 등록 (라우트 연결)
-app.register_blueprint(upload_bp, url_prefix='/upload')
-app.register_blueprint(analyze_bp, url_prefix='/analyze')
-app.register_blueprint(guide_bp, url_prefix='/guide')
+        # 3) VLM 모델로 분류 (경로 전달)
+        category = predict_image(temp_path)
 
-# 서버 실행
+        # 4) 임시 파일 삭제
+        try:
+            os.remove(temp_path)
+        except OSError:
+            app.logger.warning(f"임시 파일 삭제 실패: {temp_path}")
+
+        # 5) LLM 서비스로 가이드 생성
+        guidance = get_guidance_for_category(category)
+
+        # 6) 결과 반환
+        return jsonify({
+            'category': category,
+            'guidance': guidance
+        }), 200
+
+    except Exception as e:
+        app.logger.error("🔥 업로드 처리 중 예외 발생", exc_info=True)
+        return jsonify(error=str(e)), 500
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # debug=True 로 실행하면 에러가 터미널과 브라우저에 자세히 표시됩니다.
+    app.run(host='127.0.0.1', port=5000, debug=True)

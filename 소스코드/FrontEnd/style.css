@@ -1,225 +1,103 @@
-/* 전체 페이지 기본 설정 */
+/* 1. 전체 레이아웃 중앙 정렬 */
 body {
-  font-family: 'Noto Sans KR', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #dce6eb 
-}
-
-.container {
-  max-width: 600px;
-  margin: 100px auto 40px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(58, 80, 107, 0.15);
-}
-
-/* 메인 */
-h1 {
-  text-align: center;
-  color: #3a506b;
-}
-
-/* 이미지 업로드 */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* 버튼 스타일 */
-button,
-.floating-history-btn {
-  padding: 10px 20px;
-  background-color: #5bc0be;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* 버튼 호버 */
-button:hover,
-.floating-history-btn:hover {
-  background-color: #40a3a1;
-}
-
-/* 에러 메시지 */
-#errorSection {
-  margin-top: 20px;
-  color: #ff4d4f;
-  text-align: center;
-}
-
-/* 사용법 버튼과 기록보기 버튼 */
-.floating-help-btn,
-.floating-history-btn {
-  position: fixed;
-  top: 20px;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
-}
-
-.floating-help-btn {
-  right: 20px;
-  background-color: #3a506b;
-}
-
-.floating-help-btn:hover {
-  background-color: #2b3b4c;
-}
-
-.floating-history-btn {
-  right: 120px;
-  background-color: #5bc0be;
-}
-
-.floating-history-btn:hover {
-  background-color: #40a3a1;
-}
-
-/* 모달 배경 */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(58, 80, 107, 0.5);
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #eef2f7;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  padding-top: 2rem;
+  margin: 0;
 }
 
-/* 모달 내부 */
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  width: 320px;
+/* 2. 메인 컨테이너 카드화 */
+main {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(58, 80, 107, 0.25);
-  position: relative;
-  max-height: 90%;
-  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 2rem;
 }
 
-/* 모달 제목 */
-.modal-content h2 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #3a506b;
-}
-
-/* 설명 리스트 */
-.modal-content ol {
-  padding-left: 18px;
-  margin: 10px 0 0 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #1c2541;
-}
-
-/* 모달 닫기 버튼 (X) */
-.close-btn {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 18px;
-  color: #aaa;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-  color: #3a506b;
-}
-
-/* 기록 리스트 */
-#historyList {
-  list-style: none;
-  padding: 0;
-}
-
-#historyList li {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  color: #3a506b;
-}
-
-#historyList li:last-child {
-  border-bottom: none;
-}
-
-.hidden {
-  display: none;
-}
-
-/* 분석 중 메시지 - 추가 요소 */
-#loadingMessage {
+/* 3. 헤더 스타일 */
+h1 {
   text-align: center;
-  font-size: 14px;
-  color: #3a506b;
-  margin-bottom: 15px;
+  color: #324a6e;
+  margin-bottom: 1.5rem;
 }
 
-/* 통계 박스 */
-.stats-box {
-  background-color: #f4f6f8;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #1c2541;
+/* 4. 파일 입력 + 버튼 그룹 */
+.upload-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
-/* 통계 리스트 */
-.stats-box ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 5px 0 0 0;
+.upload-form input[type="file"] {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-.stats-box li {
-  margin: 4px 0;
-}
-
-/* 아래 3개 전부 추가 요소 */
-
-/* 안내문 복사 버튼 */
-#copyGuideBtn {
-  margin-top: 10px;
-  padding: 6px 14px;
-  background-color: #5bc0be;
-  color: white;
+.upload-form button {
+  background: #4caf50;
+  color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 13px;
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s, transform 0.1s;
 }
 
-/* 복사 버튼 호버 효과 */
-#copyGuideBtn:hover {
-  background-color: #40a3a1;
+.upload-form button:hover {
+  background: #43a047;
 }
 
-/* 복사 상태 텍스트 */
-#copyStatus {
-  font-size: 12px;
-  color: #555;
-  margin-top: 5px;
+.upload-form button:active {
+  transform: scale(0.98);
+}
+
+/* 5. 기록/사용법 버튼 그룹 */
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.button-group button {
+  background: #fff;
+  border: 1px solid #4caf50;
+  color: #4caf50;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button-group button:hover {
+  background: #4caf50;
+  color: #fff;
+}
+
+/* 6. 결과 영역 페이드인 */
+#resultSection {
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. 로딩 텍스트 */
+#loading {
   text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
