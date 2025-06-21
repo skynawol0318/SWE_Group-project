@@ -15,7 +15,7 @@ def upload_image():
         return jsonify({'error': 'No selected file'}), 400
 
     if file:
-        # 확장자 추출 (예: .jpg, .png)
+        # 확장자 추출 
         ext = os.path.splitext(file.filename)[1]
 
         # 고유한 파일명 생성
