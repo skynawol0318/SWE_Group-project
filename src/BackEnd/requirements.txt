@@ -3,3 +3,4 @@ gunicorn
 pillow
 ollama
 flask-cors
+requests
