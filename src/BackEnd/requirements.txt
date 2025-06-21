@@ -1,3 +1,4 @@
 flask
 gunicorn
-ollama
+pillow
+openai
