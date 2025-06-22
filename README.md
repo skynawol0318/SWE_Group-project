@@ -26,7 +26,7 @@ Frontend	HTML, CSS, JavaScript
 Backend	Python (Flask)
 AI 모델	Ollama 기반 VLM, LLM 연동
 
-🔄 프로젝트 동작 흐름
+🔄 프로젝트 동작 흐름:
 사용자가 이미지를 업로드
 
 Flask 백엔드에서 VLM 모델 호출 → 쓰레기 종류 판별
