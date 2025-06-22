@@ -20,7 +20,7 @@ LLM 모델 기반 분리수거 안내 생성
 
 분류 결과(쓰레기 종류)와 가이드(안내문)를 사용자에게 실시간 출력
 
-🧰 기술 스택
+🧰 기술 스택:
 구분	기술
 Frontend	HTML, CSS, JavaScript
 Backend	Python (Flask)
